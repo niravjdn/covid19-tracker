@@ -6,40 +6,41 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { withStyles } from '@material-ui/core/styles';
+import logo from './../logo.png';
 
+const useStyles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
 
-
+  },
+  title: {
+    flexGrow: 1,
+  },
+});
 class AppNavBar extends Component {
-  
 
 
   render () {
-
-    let useStyles = makeStyles((theme) => ({
-      root: {
-        flexGrow: 1,
-      },
-      menuButton: {
-        marginRight: theme.spacing(2),
-      },
-      title: {
-        flexGrow: 1,
-      },
-    }));
   
-    const classes = useStyles();
-
+    const {classes} = this.props;
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" color="white">
           <Toolbar>
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
+          <img src={logo}  alt="logo" width="30px" height="30px" />
+
+            <Typography variant="title" className={classes.menuButton}
+              color="inherit">
+              
+           </Typography>
+
             <Typography variant="h6" className={classes.title}>
-              News
+              Covid19 Tracker
             </Typography>
-            <Button color="inherit">Login</Button>
           </Toolbar>
         </AppBar>
       </div>
@@ -48,4 +49,4 @@ class AppNavBar extends Component {
 
 }
 
-export default AppNavBar;
+export default withStyles(useStyles)(AppNavBar)
